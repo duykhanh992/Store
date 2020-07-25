@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Form{% endblock %}
+
+
+{% block content %}
+<form action="employeeview" method="post">
+    {% csrf_token %}
+    First Name : <input type="text" name="firstname"><br>
+    Last Name : <input type="text" name="lastname">
+    <input type="submit"></form>
+{% endblock %}
