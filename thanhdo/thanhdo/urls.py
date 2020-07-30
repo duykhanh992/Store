@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from thanhdo import settings
 from rest_framework import routers
 from product import views
+from product.views import CarrierNameViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
@@ -33,5 +34,10 @@ urlpatterns = [
     path("api/gettoken/", TokenObtainPairView.as_view(), name="gettoken"),
     path("api/refresh_token/", TokenRefreshView.as_view(), name="refresh_token"),
     path("", include("home.urls")),
+    path(
+        "api/carrierbyname/<str:name>",
+        CarrierNameViewSet.as_view(),
+        name="carrierbyname",
+    ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
